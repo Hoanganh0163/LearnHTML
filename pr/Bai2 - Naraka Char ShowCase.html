@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html{
+            background: #000;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        .container {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 1em;
+            width: 1380px;
+            height: 600px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            transition: all 400ms;
+        }
+
+        .box {
+            position: relative;
+            background: var(--img) center center;
+            background-size: cover;
+            transition: all 400ms;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box::after {
+            content: attr(data-text);
+            position: absolute;
+            bottom: 20px;
+            background: #000;
+            color: #fff;
+            padding: 10px 10px 10px 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 400ms;
+        }
+
+        .container:hover .box {
+            filter: grayscale(100%) opacity(24%);
+        }
+
+        .box:hover::after {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 400ms;
+        }
+
+        .container .box:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+
+        .container:has(.box-1:hover) {
+            grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-2:hover) {
+            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-3:hover) {
+            grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-4:hover) {
+            grid-template-columns: 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-5:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-6:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-7:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-8:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-9:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-10:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-11:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-12:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-13:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-14:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr 1fr;
+        }
+
+        .container:has(.box-15:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr;
+        }
+
+        .container:has(.box-16:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr;
+        }
+
+        .container:has(.box-17:hover) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
+        }
+
+        
+        .box:nth-child(odd) {
+            transform: translateY(-16px);
+        }
+
+        .box:nth-child(even) {
+            transform: translateY(16px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box-1" style="--img: url(https://naraka.wiki/characters/full/ziping-yin.webp);" data-text="Ân Tử Bình"></div>
+        <div class="box box-2" style="--img: url(https://naraka.wiki/characters/full/zai-ji.png);" data-text="Qúy Doanh Doanh"></div>
+        <div class="box box-3" style="--img: url(https://naraka.wiki/characters/full/tessa.png);" data-text="Ngọc Linh Lung"></div>
+        <div class="box box-4" style="--img: url(https://naraka.wiki/characters/full/valda-cui.webp);" data-text="Thôi Tam Nương"></div>
+        <div class="box box-5" style="--img: url(https://naraka.wiki/characters/full/viper-ning.webp);" data-text="Ninh Hồng Dạ"></div>
+        <div class="box box-6" style="--img: url(https://naraka.wiki/characters/full/kurumi.webp);" data-text="Kurumi"></div>
+        <div class="box box-7" style="--img: url(https://naraka.wiki/characters/full/feria-shen.png);" data-text="Thẩm Diệu"></div>
+        <div class="box box-8" style="--img: url(https://naraka.wiki/characters/full/temulch.webp);" data-text="Temulch"></div>
+        <div class="box box-9" style="--img: url(https://naraka.wiki/characters/full/tarka-ji.webp);" data-text="Qúy Thương Hải"></div>
+        <div class="box box-10" style="--img: url(https://naraka.wiki/characters/full/tianhai.webp);" data-text="Thiên Hải"></div>
+        <div class="box box-11" style="--img: url(https://naraka.wiki/characters/full/yueshan.webp);" data-text="Nhạc Sơn"></div>
+        <div class="box box-12" style="--img: url(https://naraka.wiki/characters/full/wuchen.webp);" data-text="Vô Trần"></div>
+        <div class="box box-13" style="--img: url(https://naraka.wiki/characters/full/takeda-nobutada.webp);" data-text="Takeda Nobutada"></div>
+        <div class="box box-14" style="--img: url(https://naraka.wiki/characters/full/akos-hu.png);" data-text="Hồ Vi"></div>
+        <div class="box box-15" style="--img: url(https://naraka.wiki/characters/full/matari.webp);" data-text="Matari"></div>
+        <div class="box box-16" style="--img: url(https://naraka.wiki/characters/full/yoto-hime.webp);" data-text="Yoto Hime"></div>
+        <div class="box box-17" style="--img: url(https://naraka.wiki/characters/full/justina-gu.webp);" data-text="Cố Thanh Hàn"></div>
+    </div>
+</body>
+</html>
